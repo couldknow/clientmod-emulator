@@ -1,0 +1,32 @@
+# --------------------------------------------
+# Visual Studio 
+*.suo
+*.user
+*.obj
+*.pch
+*.tlog
+*.log
+*.scc
+*.exp
+*.ilk
+*.lastbuildstate
+ipch/**
+ipch
+*.sdf
+*.pdb
+*.map
+*.opensdf
+*.idb
+*.ncb
+*.htm
+*.aps
+*.dll
+*.db
+*.opendb
+.vs/*
+*.mdmp
+
+# --------------------------------------------
+# Windows build products
+[Dd]ebug*/
+[Rr]elease*/

@@ -1,28 +1,10 @@
-/**
-* Copyright (C) 2017, 2010kohtep
-*
-* This program is free software; you can redistribute it and/or
-* modify it under the terms of the GNU General Public License
-* as published by the Free Software Foundation; either version 2
-* of the License, or (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program; if not, write to the Free Software
-* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-*/
-
 #pragma once
 
-#include "..\Public\StrUtils.h"
-#include "..\Public\RevSpoofer.h"
-#include "..\Public\Encryption\CRijndael.h"
-#include "..\Public\Encryption\SHA.h"
-#include "..\Public\ExternIP.h"
+#include "StrUtils.h"
+#include "RevSpoofer.h"
+#include "Encryption\CRijndael.h"
+#include "Encryption\SHA.h"
+#include "ExternIP.h"
 #include <WinSock.h>
 #include <Windows.h>
 #include <time.h>
@@ -63,10 +45,10 @@ int SmartSteamEmuHash(void* pData)
 }
 
 // TODO: Encryption and routine validation
-int GenerateSmartSteamEmu(void* pDest, int nSteamID)
+int GenerateSmartSteamEmu(void *pDest, int nSteamID)
 {
-	auto pTicket = (int*)pDest;
-	auto pbTicket = (unsigned char*)pDest;
+	auto pTicket = (int *)pDest;
+	auto pbTicket = (unsigned char *)pDest;
 
 	auto uIP = GetExternalIPLong();
 

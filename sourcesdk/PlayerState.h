@@ -1,4 +1,4 @@
-//========= Copyright Valve Corporation, All rights reserved. ============//
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
 //
 // Purpose: 
 //
@@ -42,9 +42,8 @@ public:
 	int			fixangle;
 	// delta angle for fixangle == FIXANGLE_RELATIVE
 	QAngle		anglechange;
-	// flag to single the HLTV/Replay fake client, not transmitted
+	// flag to single the HLTV fake client, not transmitted
 	bool		hltv;
-	bool		replay;
 	int			frags;
 	int			deaths;
 #endif

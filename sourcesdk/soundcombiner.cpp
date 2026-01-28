@@ -1,15 +1,15 @@
-//========= Copyright Valve Corporation, All rights reserved. ============//
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
 //
 // Purpose: 
 //
-//===========================================================================//
+//=============================================================================//
 
 #include "cbase.h"
 #include "isoundcombiner.h"
 #include "sentence.h"
 #include "filesystem.h"
-#include "tier2/riff.h"
-#include "tier1/utlbuffer.h"
+#include "riff.h"
+#include "utlbuffer.h"
 #include "snd_audio_source.h"
 #include "snd_wave_source.h"
 #include "AudioWaveOutput.h"
@@ -366,7 +366,7 @@ static StdIOWriteBinary io_out;
 //-----------------------------------------------------------------------------
 void CSoundCombiner::ParseSentence( CSentence& sentence, IterateRIFF &walk )
 {
-	CUtlBuffer buf( 0, 0, CUtlBuffer::TEXT_BUFFER );
+	CUtlBuffer buf( 0, 0, true );
 
 	buf.EnsureCapacity( walk.ChunkSize() );
 	walk.ChunkRead( buf.Base() );

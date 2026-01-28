@@ -1,4 +1,4 @@
-//========= Copyright Valve Corporation, All rights reserved. ============//
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
 //
 // Purpose: 
 //
@@ -22,25 +22,24 @@ typedef struct netpacket_s netpacket_t;
 class INetChannelHandler
 {
 public:
-	virtual	~INetChannelHandler(void) {};
+	virtual	~INetChannelHandler( void ) {};
 
-	virtual void ConnectionStart(INetChannel* chan) = 0;	// called first time network channel is established
+	virtual void ConnectionStart(INetChannel *chan) = 0;	// called first time network channel is established
 
-	virtual void ConnectionClosing(const char* reason) = 0; // network channel is being closed by remote site
+	virtual void ConnectionClosing(const char *reason) = 0; // network channel is being closed by remote site
 
-	virtual void ConnectionCrashed(const char* reason) = 0; // network error occured
+	virtual void ConnectionCrashed(const char *reason) = 0; // network error occured
 
 	virtual void PacketStart(int incoming_sequence, int outgoing_acknowledged) = 0;	// called each time a new packet arrived
 
-	virtual void PacketEnd(void) = 0; // all messages has been parsed
+	virtual void PacketEnd( void ) = 0; // all messages has been parsed
 
-	virtual void FileRequested(const char* fileName, unsigned int transferID) = 0; // other side request a file for download
+	virtual void FileRequested(const char *fileName, unsigned int transferID) = 0; // other side request a file for download
 
-	virtual void FileReceived(const char* fileName, unsigned int transferID) = 0; // we received a file
-
-	virtual void FileDenied(const char* fileName, unsigned int transferID) = 0;	// a file request was denied by other side
+	virtual void FileReceived(const char *fileName, unsigned int transferID) = 0; // we received a file
+	
+	virtual void FileDenied(const char *fileName, unsigned int transferID) = 0;	// a file request was denied by other side
 };
-
 
 #define PROCESS_NET_MESSAGE( name )	\
 	virtual bool Process##name( NET_##name *msg )
@@ -99,9 +98,6 @@ class CLC_BaselineAck;
 class CLC_ListenEvents;
 class CLC_RespondCvarValue;
 class CLC_FileCRCCheck;
-class CLC_FileMD5Check;
-class CLC_SaveReplay;
-class CLC_CmdKeyValues;
 
 class IClientMessageHandler : public INetMessageHandler
 {
@@ -115,11 +111,6 @@ public:
 	PROCESS_CLC_MESSAGE( ListenEvents ) = 0;
 	PROCESS_CLC_MESSAGE( RespondCvarValue ) = 0;
 	PROCESS_CLC_MESSAGE( FileCRCCheck ) = 0;
-	PROCESS_CLC_MESSAGE( FileMD5Check ) = 0;
-#if defined( REPLAY_ENABLED )
-	PROCESS_CLC_MESSAGE( SaveReplay ) = 0;
-#endif
-	PROCESS_CLC_MESSAGE( CmdKeyValues ) = 0;
 };
 
 class SVC_Print;
@@ -145,15 +136,11 @@ class SVC_Prefetch;
 class SVC_Menu;
 class SVC_GameEventList;
 class SVC_GetCvarValue;
-class SVC_CmdKeyValues;
 
 class IServerMessageHandler : public INetMessageHandler
 {
 public:
 	virtual ~IServerMessageHandler( void ) {};
-
-	// Returns dem file protocol version, or, if not playing a demo, just returns PROTOCOL_VERSION
-	virtual int GetDemoProtocolVersion() const = 0;
 
 	PROCESS_SVC_MESSAGE( Print ) = 0;
 	PROCESS_SVC_MESSAGE( ServerInfo ) = 0;
@@ -178,7 +165,6 @@ public:
 	PROCESS_SVC_MESSAGE( Menu ) = 0;
 	PROCESS_SVC_MESSAGE( GameEventList ) = 0;
 	PROCESS_SVC_MESSAGE( GetCvarValue ) = 0;
-	PROCESS_SVC_MESSAGE( CmdKeyValues ) = 0;
 };
 
 class MM_Heartbeat;

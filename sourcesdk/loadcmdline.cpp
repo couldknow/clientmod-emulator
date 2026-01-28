@@ -1,4 +1,4 @@
-//========= Copyright Valve Corporation, All rights reserved. ============//
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
 //
 // Purpose: loads additional command line options from a config file
 //
@@ -6,7 +6,7 @@
 //=============================================================================//
 
 #include "KeyValues.h"
-#include "tier1/strtools.h"
+#include "vstdlib/strtools.h"
 #include "FileSystem_Tools.h"
 #include "tier1/utlstring.h"
 

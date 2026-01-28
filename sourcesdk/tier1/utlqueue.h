@@ -1,4 +1,4 @@
-//========= Copyright Valve Corporation, All rights reserved. ============//
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
 //
 // Purpose: 
 //
@@ -34,7 +34,7 @@ public:
 	// return item at the end of the queue
 	T const& Tail();
 
-	// Add a new item to the end of the queue
+	// put a new item on the stack
 	void	Insert( T const &element );
 
 	// checks if an element of this value already exists on the stack, returns true if it does

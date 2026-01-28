@@ -1,4 +1,4 @@
-//========= Copyright Valve Corporation, All rights reserved. ============//
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
 //
 // Purpose: Implements an interface to the map editor for the execution of
 //			editor shell commands from another application. Commands allow the
@@ -9,17 +9,17 @@
 
 #if !defined(_STATIC_LINKED) || defined(_SHARED_LIB)
 
-#if !defined(_X360) && defined(_WIN32)
+#ifdef _XBOX
+#include "xbox/xbox_platform.h"
+#include "xbox/xbox_win32stubs.h"
+#endif
+#if !defined(_XBOX) && defined(_WIN32)
 #include <windows.h>
 #endif
 #include <stdio.h>
 #include "editor_sendcommand.h"
-#include "tier1/strtools.h"
-#include "mathlib/vector.h"
-
-#if defined( _X360 )
-#include "xbox/xbox_win32stubs.h"
-#endif
+#include "vstdlib/strtools.h"
+#include "vector.h"
 
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"

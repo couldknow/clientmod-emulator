@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Sources">
+      <UniqueIdentifier>{dd83b088-5e90-47dd-bcc5-b914fccc99aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries">
+      <UniqueIdentifier>{f932ca60-1495-41a7-ba72-90e09eb71490}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{5e28e40d-0f6b-4985-90bf-f937c805dcb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PCH">
+      <UniqueIdentifier>{887457f4-a118-435e-8e53-192453eb86e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MultiEmulator">
+      <UniqueIdentifier>{c4f6b4f2-0293-4831-b89a-f0631db2c7b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MultiEmulator\Encryption">
+      <UniqueIdentifier>{8a62958a-3f02-4f20-8d74-e25f591967cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\detours">
+      <UniqueIdentifier>{e0cb0b55-4383-409c-a825-31c8a9f18e52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\zlib">
+      <UniqueIdentifier>{7607347e-35d4-4b52-a6cc-24402fb9b5c9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\libraries\detours.lib">
+      <Filter>Libraries</Filter>
+    </Library>
+    <Library Include="..\libraries\zlib.lib">
+      <Filter>Libraries</Filter>
+    </Library>
+    <Library Include="..\libraries\mathlib.lib">
+      <Filter>Libraries</Filter>
+    </Library>
+    <Library Include="..\libraries\tier0.lib">
+      <Filter>Libraries</Filter>
+    </Library>
+    <Library Include="..\libraries\vgui_controls.lib">
+      <Filter>Libraries</Filter>
+    </Library>
+    <Library Include="..\libraries\vgui_surfacelib.lib">
+      <Filter>Libraries</Filter>
+    </Library>
+    <Library Include="..\libraries\vstdlib.lib">
+      <Filter>Libraries</Filter>
+    </Library>
+    <Library Include="..\libraries\tier1.lib">
+      <Filter>Libraries</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\sources\main.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sources\hash_md5.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\multiemulator\ExternIP.cpp">
+      <Filter>MultiEmulator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\multiemulator\RevSpoofer.cpp">
+      <Filter>MultiEmulator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\multiemulator\StrUtils.cpp">
+      <Filter>MultiEmulator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\multiemulator\Encryption\CRijndael.cpp">
+      <Filter>MultiEmulator\Encryption</Filter>
+    </ClCompile>
+    <ClCompile Include="..\multiemulator\Encryption\DoubleBuffering.cpp">
+      <Filter>MultiEmulator\Encryption</Filter>
+    </ClCompile>
+    <ClCompile Include="..\multiemulator\Encryption\MessageDigest.cpp">
+      <Filter>MultiEmulator\Encryption</Filter>
+    </ClCompile>
+    <ClCompile Include="..\multiemulator\Encryption\SHA.cpp">
+      <Filter>MultiEmulator\Encryption</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sources\cvaraccess.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sources\hooks.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sources\framework.cpp">
+      <Filter>PCH</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\sources\asciiart.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\defs.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\hash_md5.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\sigscan.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\TimedAccess.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\XorStr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\framework.h">
+      <Filter>PCH</Filter>
+    </ClInclude>
+    <ClInclude Include="..\multiemulator\AVSMP.h">
+      <Filter>MultiEmulator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\multiemulator\ExternIP.h">
+      <Filter>MultiEmulator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\multiemulator\HTTP.h">
+      <Filter>MultiEmulator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\multiemulator\OldRevEmu.h">
+      <Filter>MultiEmulator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\multiemulator\RevEmu.h">
+      <Filter>MultiEmulator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\multiemulator\RevEmu2013.h">
+      <Filter>MultiEmulator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\multiemulator\RevSpoofer.h">
+      <Filter>MultiEmulator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\multiemulator\SC2009.h">
+      <Filter>MultiEmulator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\multiemulator\Setti.h">
+      <Filter>MultiEmulator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\multiemulator\SmartSteamEmu.h">
+      <Filter>MultiEmulator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\multiemulator\SteamEmu.h">
+      <Filter>MultiEmulator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\multiemulator\StrUtils.h">
+      <Filter>MultiEmulator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\multiemulator\Encryption\CRijndael.h">
+      <Filter>MultiEmulator\Encryption</Filter>
+    </ClInclude>
+    <ClInclude Include="..\multiemulator\Encryption\DoubleBuffering.h">
+      <Filter>MultiEmulator\Encryption</Filter>
+    </ClInclude>
+    <ClInclude Include="..\multiemulator\Encryption\MessageDigest.h">
+      <Filter>MultiEmulator\Encryption</Filter>
+    </ClInclude>
+    <ClInclude Include="..\multiemulator\Encryption\SHA.h">
+      <Filter>MultiEmulator\Encryption</Filter>
+    </ClInclude>
+    <ClInclude Include="..\detours\detours.h">
+      <Filter>Headers\detours</Filter>
+    </ClInclude>
+    <ClInclude Include="..\detours\detver.h">
+      <Filter>Headers\detours</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zlib\zutil.h">
+      <Filter>Headers\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zlib\zlib.h">
+      <Filter>Headers\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zlib\trees.h">
+      <Filter>Headers\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zlib\zconf.h">
+      <Filter>Headers\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zlib\inflate.h">
+      <Filter>Headers\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zlib\inftrees.h">
+      <Filter>Headers\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zlib\inffast.h">
+      <Filter>Headers\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zlib\inffixed.h">
+      <Filter>Headers\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zlib\deflate.h">
+      <Filter>Headers\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zlib\gzguts.h">
+      <Filter>Headers\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zlib\crc32.h">
+      <Filter>Headers\zlib</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

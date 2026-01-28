@@ -1,14 +1,15 @@
-//========= Copyright Valve Corporation, All rights reserved. ============//
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
 //
 // Purpose: 
 //
-//===========================================================================//
+//=============================================================================//
 
 #ifndef TEXTURE_GROUP_NAMES_H
 #define TEXTURE_GROUP_NAMES_H
 #ifdef _WIN32
 #pragma once
 #endif
+
 
 // These are given to FindMaterial to reference the texture groups that show up on the 
 #define TEXTURE_GROUP_LIGHTMAP						"Lightmaps"
@@ -33,11 +34,12 @@
 #define TEXTURE_GROUP_STATIC_VERTEX_BUFFER_OTHER	"Other Verts"
 #define TEXTURE_GROUP_DYNAMIC_INDEX_BUFFER			"Dynamic Indices"
 #define TEXTURE_GROUP_DYNAMIC_VERTEX_BUFFER			"Dynamic Verts"
+
 #define TEXTURE_GROUP_DEPTH_BUFFER					"DepthBuffer"
 #define TEXTURE_GROUP_VIEW_MODEL					"ViewModel"
+
+#define TEXTURE_GROUP_FRAME_BUFFER					"Frame Buffers"
 #define TEXTURE_GROUP_PIXEL_SHADERS					"Pixel Shaders"
 #define TEXTURE_GROUP_VERTEX_SHADERS				"Vertex Shaders"
-#define TEXTURE_GROUP_RENDER_TARGET_SURFACE			"RenderTarget Surfaces"
-#define TEXTURE_GROUP_MORPH_TARGETS					"Morph Targets"
 
 #endif // TEXTURE_GROUP_NAMES_H

@@ -1,4 +1,4 @@
-//========= Copyright Valve Corporation, All rights reserved. ============//
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
 //
 // Purpose: 
 //
@@ -14,10 +14,8 @@
 #endif
 
 #include "edict.h"
-#include "tier1/interface.h"
-#include "tier1/KeyValues.h"
-
-class CCommand;
+#include "interface.h"
+#include "KeyValues.h"
 
 //
 // you will also want to listen for game events via IGameEventManager::AddListener()
@@ -30,7 +28,6 @@ typedef enum
 	PLUGIN_STOP, // don't run the game dll function at all
 } PLUGIN_RESULT;
 
-
 typedef enum
 {
 	eQueryCvarValueStatus_ValueIntact=0,	// It got the value fine.
@@ -39,15 +36,11 @@ typedef enum
 	eQueryCvarValueStatus_CvarProtected=3	// The cvar was marked with FCVAR_SERVER_CAN_NOT_QUERY, so the server is not allowed to have its value.
 } EQueryCvarValueStatus;
 
-
 typedef int QueryCvarCookie_t;
+
 #define InvalidQueryCvarCookie -1
-
-
 #define INTERFACEVERSION_ISERVERPLUGINCALLBACKS_VERSION_1	"ISERVERPLUGINCALLBACKS001"
-#define INTERFACEVERSION_ISERVERPLUGINCALLBACKS_VERSION_2	"ISERVERPLUGINCALLBACKS002"
-#define INTERFACEVERSION_ISERVERPLUGINCALLBACKS				"ISERVERPLUGINCALLBACKS003"
-
+#define INTERFACEVERSION_ISERVERPLUGINCALLBACKS				"ISERVERPLUGINCALLBACKS002"
 //-----------------------------------------------------------------------------
 // Purpose: callbacks the engine exposes to the 3rd party plugins (ala MetaMod)
 //-----------------------------------------------------------------------------
@@ -102,31 +95,26 @@ public:
 	virtual PLUGIN_RESULT	ClientConnect( bool *bAllowConnect, edict_t *pEntity, const char *pszName, const char *pszAddress, char *reject, int maxrejectlen ) = 0;
 
 	// The client has typed a command at the console
-	virtual PLUGIN_RESULT	ClientCommand( edict_t *pEntity, const CCommand &args ) = 0;
+	virtual PLUGIN_RESULT	ClientCommand( edict_t *pEntity ) = 0;
 
 	// A user has had their network id setup and validated 
 	virtual PLUGIN_RESULT	NetworkIDValidated( const char *pszUserName, const char *pszNetworkID ) = 0;
-
+	
 	// This is called when a query from IServerPluginHelpers::StartQueryCvarValue is finished.
 	// iCookie is the value returned by IServerPluginHelpers::StartQueryCvarValue.
 	// Added with version 2 of the interface.
-	virtual void			OnQueryCvarValueFinished( QueryCvarCookie_t iCookie, edict_t *pPlayerEntity, EQueryCvarValueStatus eStatus, const char *pCvarName, const char *pCvarValue ) = 0;
-
-	// added with version 3 of the interface.
-	virtual void			OnEdictAllocated( edict_t *edict ) = 0;
-	virtual void			OnEdictFreed( const edict_t *edict  ) = 0;	
+	virtual void 			OnQueryCvarValueFinished( QueryCvarCookie_t iCookie, edict_t *pPlayerEntity, EQueryCvarValueStatus eStatus, const char *pCvarName, const char *pCvarValue )= 0;
 };
 
-#define INTERFACEVERSION_ISERVERPLUGINHELPERS			"ISERVERPLUGINHELPERS001"
+#define INTERFACEVERSION_ISERVERPLUGINHELPERS	"ISERVERPLUGINHELPERS001"
 
 
 typedef enum
 {
-	DIALOG_MSG = 0,		// just an on screen message
-	DIALOG_MENU,		// an options menu
-	DIALOG_TEXT,		// a richtext dialog
-	DIALOG_ENTRY,		// an entry box
-	DIALOG_ASKCONNECT	// Ask the client to connect to a specified IP address. Only the "time" and "title" keys are used.
+	DIALOG_MSG = 0, // just an on screen message
+	DIALOG_MENU, // an options menu
+	DIALOG_TEXT, // a richtext dialog
+	DIALOG_ENTRY // an entry box
 } DIALOG_TYPE;
 
 //-----------------------------------------------------------------------------

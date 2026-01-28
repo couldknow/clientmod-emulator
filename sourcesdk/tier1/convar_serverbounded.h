@@ -1,4 +1,4 @@
-//========= Copyright Valve Corporation, All rights reserved. ============//
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
 //
 // Purpose: Helper class for cvars that have restrictions on their value.
 //
@@ -27,7 +27,7 @@ public:
 	{
 	}
 
-	ConVar_ServerBounded( char const *pName, char const *pDefaultValue, int flags, char const *pHelpString, FnChangeCallback_t callback )
+	ConVar_ServerBounded( char const *pName, char const *pDefaultValue, int flags, char const *pHelpString, FnChangeCallback callback )
 		: ConVar( pName, pDefaultValue, flags, pHelpString, callback ) 
 	{
 	}

@@ -1,4 +1,4 @@
-//========= Copyright Valve Corporation, All rights reserved. ============//
+//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
 //
 // Purpose:
 //
@@ -14,8 +14,6 @@
 #if defined( _WIN32 )
 #pragma once
 #endif
-
-#include "tier1/utlhash.h"
 
 #include <string_t.h> // NULL_STRING define
 struct edict_t;
@@ -181,10 +179,8 @@ class CGameSaveRestoreInfo
 {
 public:
 	CGameSaveRestoreInfo()
-		: tableCount( 0 ), pTable( 0 ), m_pCurrentEntity( 0 ), m_EntityToIndex( 1024 )
 	{
-		memset( &levelInfo, 0, sizeof( levelInfo ) );
-		modelSpaceOffset.Init( 0, 0, 0 );
+		memset( this, 0, sizeof(*this) );
 	}
 
 	void InitEntityTable( entitytable_t *pNewTable = NULL, int size = 0 )
@@ -214,57 +210,6 @@ public:
 	float GetBaseTime() const				{ return levelInfo.time; }
 	Vector GetLandmark() const				{ return ( levelInfo.fUseLandmark ) ? levelInfo.vecLandmarkOffset : vec3_origin; }
 
-	void BuildEntityHash()
-	{
-#ifdef GAME_DLL
-		int i;
-		entitytable_t *pTable;
-		int nEntities = NumEntities();
-
-		for ( i = 0; i < nEntities; i++ )
-		{
-			pTable = GetEntityInfo( i );
-			m_EntityToIndex.Insert(  CHashElement( pTable->hEnt.Get(), i ) );
-		}
-#endif
-	}
-
-	void PurgeEntityHash()
-	{
-		m_EntityToIndex.Purge();
-	}
-
-	int	GetEntityIndex( const CBaseEntity *pEntity )
-	{
-#ifdef SR_ENTS_VISIBLE
-		if ( pEntity )
-		{
-			if ( m_EntityToIndex.Count() )
-			{
-				UtlHashHandle_t hElement = m_EntityToIndex.Find( CHashElement( pEntity ) );
-				if ( hElement != m_EntityToIndex.InvalidHandle() )
-				{
-					return m_EntityToIndex.Element( hElement ).index;
-				}
-			}
-			else
-			{
-				int i;
-				entitytable_t *pTable;
-
-				int nEntities = NumEntities();
-				for ( i = 0; i < nEntities; i++ )
-				{
-					pTable = GetEntityInfo( i );
-					if ( pTable->hEnt == pEntity )
-						return pTable->id;
-				}
-			}
-		}
-#endif
-		return -1;
-	}
-
 	saverestorelevelinfo_t levelInfo;
 	Vector		modelSpaceOffset;			// used only for globaly entity brushes modelled in different coordinate systems.
 	
@@ -272,52 +217,16 @@ private:
 	int			tableCount;		// Number of elements in the entity table
 	entitytable_t	*pTable;		// Array of entitytable_t elements (1 for each entity)
 	CBaseEntity		*m_pCurrentEntity; // only valid during the save functions of this entity, NULL otherwise
-
-
-	struct CHashElement
-	{
-		const CBaseEntity *pEntity; 
-		int index;
-
-		CHashElement( const CBaseEntity *pEntity, int index) : pEntity(pEntity), index(index) {}
-		CHashElement( const CBaseEntity *pEntity ) : pEntity(pEntity) {}
-		CHashElement() {}
-	};
-
-	class CHashFuncs
-	{
-	public:
-		CHashFuncs( int ) {}
-
-		// COMPARE
-		bool operator()( const CHashElement &lhs, const CHashElement &rhs ) const
-		{
-			return lhs.pEntity == rhs.pEntity;
-		}
-
-		// HASH
-		unsigned int operator()( const CHashElement &item ) const
-		{
-			return HashItem( item.pEntity );
-		}
-	};
-
-	typedef CUtlHash<CHashElement, CHashFuncs, CHashFuncs> CEntityToIndexHash;
-
-	CEntityToIndexHash m_EntityToIndex;
 };
 
 //-----------------------------------------------------------------------------
-
+// @Note (toml 11-27-02): This is hopefully a temporary state of affairs as responsibilites of engine
+// versus game get combed out, and support for arbitrary segments of the compound save
+// file is established
 
 class CSaveRestoreData : public CSaveRestoreSegment,
 						 public CGameSaveRestoreInfo
 {
-public:
-	CSaveRestoreData() : bAsync( false ) {}
-
-
-	bool bAsync;
 };
 
 inline CSaveRestoreData *MakeSaveRestoreData( void *pMemory )
@@ -434,7 +343,6 @@ inline void CSaveRestoreSegment::InitSymbolTable( char **pNewTokens, int sizeTab
 	Assert( !pTokens );
 	tokenCount = sizeTable;
 	pTokens = pNewTokens;
-	memset( pTokens, 0, sizeTable * sizeof( pTokens[0]) );
 }
 
 inline char **CSaveRestoreSegment::DetachSymbolTable()
